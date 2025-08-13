@@ -1,8 +1,9 @@
-using Azure.Core;
 using Domain.Users;
 using Microsoft.AspNetCore.Mvc;
-using ProjetoRl.Domain.Users.DTOs;
 using ProjetoRl.ProjetoRl.API;
+using ProjetoRl.ProjetoRl.Domain.AccessTokens;
+using ProjetoRl.ProjetoRl.Domain.Users;
+using ProjetoRl.ProjetoRl.Domain.Users.DTOs;
 
 [ApiController]
 [Route("auth")]
@@ -24,17 +25,15 @@ public class AuthService : ControllerBase
     public async Task<ActionResult<JWTToken>> AuthenticateWithPasswordAsync([FromBody] AuthenticateWithPasswordDto dto)
     {
         // Busca usuário pelo e-mail
-        var user = await _userRep.GetByEmailAsync(dto.Email);
-        if (user == null || !user.ValidatePassword(dto.Password))
-            return Unauthorized();
+        var user = await _userRep.GetByEmailAsync(dto.Email);        
 
-        if (user.State == UserState.Deactivated)
+        if (user!.State == UserState.Deactivated)
             return Forbid();
 
         var token = new JWTToken(user);
 
         var ip = Request?.HttpContext?.Connection?.RemoteIpAddress?.ToString() ?? "127.0.0.1";
-        var accessToken = new AccessToken(token.Token, token.Expires);
+        var accessToken = new ProjetoRl.ProjetoRl.Domain.AccessTokens.AccessToken(token.Token, user.ID!);
 
         await _accessTokenRep.SaveAsync(accessToken);
 

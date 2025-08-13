@@ -15,11 +15,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="NLog" Version="5.2.3" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.3" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProjetoRl.Domain\ProjetoRl.Domain.csproj" />
+    <ProjectReference Include="..\ProjetoRl.Commom\Commom.csproj" />
+    <ProjectReference Include="..\Infra\Data\Repositories\MongoDB\Implementation\RepositoriesMongoDB.csproj" />
   </ItemGroup>
 
 </Project>

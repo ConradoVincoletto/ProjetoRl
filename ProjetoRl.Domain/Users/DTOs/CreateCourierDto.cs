@@ -1,4 +1,4 @@
-namespace ProjetoRl.Domain.Users.DTOs;
+namespace ProjetoRl.ProjetoRl.Domain.Users.DTOs;
 
 public class CreateCourierDTO
 {
@@ -7,8 +7,8 @@ public class CreateCourierDTO
     public string Cnpj { get; set; } = null!;
     public DateTime BirthDate { get; set; }
     public string DriverLicenseNumber { get; set; } = null!;
-    public string DriverLicenseType { get; set; } = null!;
+    public LicenseType DriverLicenseType { get; set; }
     public string DriverLicenseImagePath { get; set; } = null!;
+    public string? DriverLicenseImageBase64 { get; set; }
 }
 
-public class UpdateCourierDTO : CreateCourierDTO { }

@@ -1,4 +1,4 @@
-namespace ProjetoRl.Domain.Users.DTOs;
+namespace ProjetoRl.ProjetoRl.Domain.Users.DTOs;
 
 /// <summary>DTO used in the authentication process on the local database.</summary>
 public class AuthenticateWithPasswordDto

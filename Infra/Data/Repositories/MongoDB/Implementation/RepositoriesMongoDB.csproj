@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk"> 
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ProjetoRl.Infra.Data.Repositories.MongoDB.Implemetantions</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.19.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\ProjetoRl.Domain\ProjetoRl.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\ProjetoRl.Commom\ProjetoRl.Commom.csproj" />
+  </ItemGroup>
+
+</Project>

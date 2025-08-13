@@ -4,6 +4,78 @@
     "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.API\\ProjetoRl.API.csproj": {}
   },
   "projects": {
+    "C:\\Users\\conra\\ProjetoRl\\Infra\\Data\\Repositories\\MongoDB\\Implementation\\RepositoriesMongoDB.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\conra\\ProjetoRl\\Infra\\Data\\Repositories\\MongoDB\\Implementation\\RepositoriesMongoDB.csproj",
+        "projectName": "ProjetoRl.Infra.Data.Repositories.MongoDB.Implemetantions",
+        "projectPath": "C:\\Users\\conra\\ProjetoRl\\Infra\\Data\\Repositories\\MongoDB\\Implementation\\RepositoriesMongoDB.csproj",
+        "packagesPath": "C:\\Users\\conra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\conra\\ProjetoRl\\Infra\\Data\\Repositories\\MongoDB\\Implementation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\conra\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Domain\\ProjetoRl.Domain.csproj": {
+                "projectPath": "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Domain\\ProjetoRl.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.19.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.API\\ProjetoRl.API.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -29,6 +101,12 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "C:\\Users\\conra\\ProjetoRl\\Infra\\Data\\Repositories\\MongoDB\\Implementation\\RepositoriesMongoDB.csproj": {
+                "projectPath": "C:\\Users\\conra\\ProjetoRl\\Infra\\Data\\Repositories\\MongoDB\\Implementation\\RepositoriesMongoDB.csproj"
+              },
+              "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\Commom.csproj": {
+                "projectPath": "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\Commom.csproj"
+              },
               "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Domain\\ProjetoRl.Domain.csproj": {
                 "projectPath": "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Domain\\ProjetoRl.Domain.csproj"
               }
@@ -83,6 +161,10 @@
               "target": "Package",
               "version": "[5.3.3, )"
             },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.2.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -103,6 +185,68 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\Commom.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\Commom.csproj",
+        "projectName": "Commom",
+        "projectPath": "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\Commom.csproj",
+        "packagesPath": "C:\\Users\\conra\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\conra\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -135,7 +279,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\Commom.csproj": {
+                "projectPath": "C:\\Users\\conra\\ProjetoRl\\ProjetoRl.Commom\\Commom.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

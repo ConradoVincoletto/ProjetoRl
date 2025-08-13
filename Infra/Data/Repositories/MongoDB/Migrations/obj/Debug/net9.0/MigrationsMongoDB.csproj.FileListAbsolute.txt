@@ -1,0 +1,15 @@
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\bin\Debug\net9.0\migrations\projetoRl\000000001_model_user_collection.js
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\bin\Debug\net9.0\migrations\projetoRl\000000002_seed_user.js
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\bin\Debug\net9.0\appsettings.json
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\bin\Debug\net9.0\ProjectRl.Infra.Data.Repositories.MongoDB.Migrations.deps.json
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\bin\Debug\net9.0\ProjectRl.Infra.Data.Repositories.MongoDB.Migrations.dll
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\bin\Debug\net9.0\ProjectRl.Infra.Data.Repositories.MongoDB.Migrations.pdb
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\MigrationsMongoDB.csproj.AssemblyReference.cache
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\MigrationsMongoDB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\MigrationsMongoDB.AssemblyInfoInputs.cache
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\MigrationsMongoDB.AssemblyInfo.cs
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\MigrationsMongoDB.csproj.CoreCompileInputs.cache
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\ProjectRl.Infra.Data.Repositories.MongoDB.Migrations.dll
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\refint\ProjectRl.Infra.Data.Repositories.MongoDB.Migrations.dll
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\ProjectRl.Infra.Data.Repositories.MongoDB.Migrations.pdb
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Migrations\obj\Debug\net9.0\ref\ProjectRl.Infra.Data.Repositories.MongoDB.Migrations.dll

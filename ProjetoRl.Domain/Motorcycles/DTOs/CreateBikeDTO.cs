@@ -7,5 +7,3 @@ public class CreateBikeDTO
     public string Model { get; set; } = string.Empty;
     public string Plate { get; set; } = string.Empty;
 }
-
-public class UpdateBikeDTO : CreateBikeDTO { }

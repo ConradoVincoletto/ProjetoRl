@@ -1,0 +1,11 @@
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\bin\Debug\net9.0\ProjetoRl.Commom.deps.json
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\bin\Debug\net9.0\ProjetoRl.Commom.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\bin\Debug\net9.0\ProjetoRl.Commom.pdb
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ProjetoRl.Commom.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ProjetoRl.Commom.AssemblyInfoInputs.cache
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ProjetoRl.Commom.AssemblyInfo.cs
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ProjetoRl.Commom.csproj.CoreCompileInputs.cache
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ProjetoRl.Commom.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\refint\ProjetoRl.Commom.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ProjetoRl.Commom.pdb
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ref\ProjetoRl.Commom.dll

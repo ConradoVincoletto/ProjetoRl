@@ -23,7 +23,7 @@ public class JWTToken
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.ID!.ToString()),
                 new Claim(ClaimTypes.Email, user.Email)
             }),
             Expires = Expires,

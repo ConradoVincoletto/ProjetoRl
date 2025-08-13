@@ -1,6 +1,6 @@
 using Domain.Users;
 
-namespace ProjetoRl.Domain.Users.DTOs;
+namespace ProjetoRl.ProjetoRl.Domain.Users.DTOs;
 
 /// <summary>DTO used in the user registration process with password authentication.</summary>
 public class CreateUserAccountDto

@@ -1,0 +1,15 @@
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\bin\Debug\net9.0\ProjetoRl.Domain.deps.json
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\bin\Debug\net9.0\ProjetoRl.Domain.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\bin\Debug\net9.0\ProjetoRl.Domain.pdb
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\bin\Debug\net9.0\Commom.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\bin\Debug\net9.0\Commom.pdb
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoRl.Domain.csproj.AssemblyReference.cache
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoRl.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoRl.Domain.AssemblyInfoInputs.cache
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoRl.Domain.AssemblyInfo.cs
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoRl.Domain.csproj.CoreCompileInputs.cache
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoR.6DC2CBDA.Up2Date
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoRl.Domain.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\refint\ProjetoRl.Domain.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ProjetoRl.Domain.pdb
+C:\Users\conra\ProjetoRl\ProjetoRl.Domain\obj\Debug\net9.0\ref\ProjetoRl.Domain.dll
