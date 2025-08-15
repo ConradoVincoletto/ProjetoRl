@@ -1,13 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>ProjectRl.Infra.Data.Repositories.MongoDB.Migrations</AssemblyName>
-  </PropertyGroup>
+<PropertyGroup>
+  <OutputType>Exe</OutputType>
+  <TargetFramework>net9.0</TargetFramework>
+  <ImplicitUsings>enable</ImplicitUsings>
+  <AssemblyName>ProjectRl.Infra.Data.Repositories.MongoDB.Migrations</AssemblyName>
+</PropertyGroup>
+
 
   <ItemGroup>
     <Content Include="$(ProjectDir)\migrations\**" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
   
@@ -18,8 +24,6 @@
     <PackageReference Include="MongoDB.Driver" Version="2.19.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="appsettings.json" CopyToOutputDirectory="Always" />
-  </ItemGroup>
+
     
 </Project>

@@ -98,11 +98,11 @@ builder.Services.AddSwaggerGen(c =>
     var docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.API.xml");
     c.IncludeXmlComments(docPath, true);
 
-    docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.Domain.xml");
-    c.IncludeXmlComments(docPath);
+    // docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.Domain.xml");
+    // c.IncludeXmlComments(docPath);
 
-    docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.Common.xml");
-    c.IncludeXmlComments(docPath);
+    // docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.Common.xml");
+    // c.IncludeXmlComments(docPath);
 });
 
 // ========================= JWT Authentication =========================

@@ -131,19 +131,19 @@
           "dependencies": {
             "AspNetCore.HealthChecks.SqlServer": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[8.0.1, )"
             },
             "FluentValidation.AspNetCore": {
               "target": "Package",
-              "version": "[10.3.6, )"
+              "version": "[11.3.1, )"
             },
             "MicroElements.Swashbuckle.FluentValidation": {
               "target": "Package",
-              "version": "[5.4.0, )"
+              "version": "[6.1.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -151,11 +151,11 @@
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[1.14.0, )"
+              "version": "[1.19.5, )"
             },
             "NLog": {
               "target": "Package",
-              "version": "[5.2.3, )"
+              "version": "[5.3.3, )"
             },
             "NLog.Web.AspNetCore": {
               "target": "Package",
@@ -163,11 +163,11 @@
             },
             "RabbitMQ.Client": {
               "target": "Package",
-              "version": "[6.2.4, )"
+              "version": "[6.8.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[6.6.2, )"
             }
           },
           "imports": [

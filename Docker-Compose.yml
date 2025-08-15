@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ProjetoRl.API/Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - redis
+      - mongodb
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
+      - DOTNET_RUNNING_IN_CONTAINER=true
+      - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+      - ConnectionStrings__MongoDb=mongodb://mongodb:27017
+      - ConnectionStrings__Redis=redis:6379
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpass

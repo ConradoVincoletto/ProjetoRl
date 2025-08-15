@@ -10,6 +10,7 @@ C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debu
 C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debug\net9.0\RepositoriesMongoDB.AssemblyInfoInputs.cache
 C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debug\net9.0\RepositoriesMongoDB.AssemblyInfo.cs
 C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debug\net9.0\RepositoriesMongoDB.csproj.CoreCompileInputs.cache
+C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debug\net9.0\RepositoriesMongoDB.sourcelink.json
 C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debug\net9.0\Reposito.119862AF.Up2Date
 C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debug\net9.0\ProjetoRl.Infra.Data.Repositories.MongoDB.Implemetantions.dll
 C:\Users\conra\ProjetoRl\Infra\Data\Repositories\MongoDB\Implementation\obj\Debug\net9.0\refint\ProjetoRl.Infra.Data.Repositories.MongoDB.Implemetantions.dll

@@ -19,6 +19,11 @@ public class AuthService : ControllerBase
         _userRep = userRep;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
     [HttpPost("auth", Name = "AuthenticateWithPassword")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]

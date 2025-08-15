@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProjetoRl.API</name>
+    </assembly>
+    <members>
+        <member name="M:AuthService.AuthenticateWithPasswordAsync(ProjetoRl.ProjetoRl.Domain.Users.DTOs.AuthenticateWithPasswordDto)">
+            <summary>
+            
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="F:ProjetoRl.API.Controllers.BikeService._connectionFactory">
+            <summary>Factory of connections with the rabbitMQ.</summary>
+        </member>
+        <member name="F:ProjetoRl.API.Controllers.BikeService._con">
+            <summary>Connection with RabbitMQ.</summary>
+        </member>
+        <member name="F:ProjetoRl.API.Controllers.BikeService._model">
+            <summary>Model of RabbitMQ.</summary>
+        </member>
+        <member name="T:ProjetoRl.ProjetoRl.API.Config.AuthConfig">
+            <summary>Authentication settings.</summary>
+        </member>
+        <member name="P:ProjetoRl.ProjetoRl.API.Config.AuthConfig.JWTKey">
+            <summary>Key used for encrypting JWT tokens.</summary>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.GetCouriers(ProjetoRl.ProjetoRl.Domain.Users.DTOs.CourierListFilterDTO)">
+            <summary>
+            Lista couriers com filtros opcionais e paginação
+            </summary>
+        </member>
+        <member name="T:Relier.Security.API.UserService">
+            <summary>Services that provide access to user account data and operations.</summary>
+        </member>
+        <member name="F:Relier.Security.API.UserService._userRep">
+            <summary>Repository for storing users.</summary>
+        </member>
+        <member name="M:Relier.Security.API.UserService.#ctor(ProjetoRl.ProjetoRl.Domain.Users.IUserRepository,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>Constructor with dependency injection.</summary>
+            <param name="userRep">Repository for storing users.</param>        
+            <param name="config">Application configuration object.</param>        
+        </member>
+        <member name="M:Relier.Security.API.UserService.ListUsersAsync(ProjetoRl.ProjetoRl.Domain.Users.DTOs.ListUsersFilterDto)">
+            <summary>Retrieves the list of all users registered on the platform that meet the filter criteria.</summary>
+            <param name="dto">DTO containing the filter parameters.</param>
+            <returns>List of users registered on the platform that meet the filter criteria.</returns>
+        </member>
+        <member name="M:Relier.Security.API.UserService.GetUserByIdAsync(System.String)">
+            <summary>Gets user information based on their identification code.</summary>
+            <param name="id">User identification code.</param>
+            <returns>Entity containing user information.</returns>
+        </member>
+        <member name="M:Relier.Security.API.UserService.CreateUserAccountAsync(ProjetoRl.ProjetoRl.Domain.Users.DTOs.CreateUserAccountDto)">
+            <summary>Creates a new user account using local authentication by setting a password.</summary>
+            <param name="dto">DTO containing the necessary information for the account registration process with password setup.</param>
+        </member>
+        <member name="M:Relier.Security.API.UserService.EditUserProfileAsync(System.String,ProjetoRl.ProjetoRl.Domain.Users.DTOs.EditUserAccountDTO)">
+            <summary>Edit the basic information of a user account.</summary>
+            <param name="id">Identification code of the user whose information will be edited.</param>
+            <param name="dto">DTO containing the updated user information.</param>        
+        </member>
+        <member name="M:Relier.Security.API.UserService.RemoveAsync(System.String)">
+            <summary>Deletes a user.</summary>
+            <param name="id">Identification code of the user to be deleted.</param>
+        </member>
+        <member name="M:Relier.Security.API.UserService.ActivateAccountAsync(System.String)">
+            <summary>Activate user account.</summary>
+            <param name="id">Identification code of the user to be activated.</param>
+        </member>
+        <member name="M:Relier.Security.API.UserService.DeactivateUserAccountAsync(System.String)">
+            <summary>Deactivate a user account based on identification code.</summary>
+            <param name="id">Identification code of the user to be deactivated.</param>
+        </member>
+        <member name="M:Relier.Security.API.UserService.ValidateIfAnEmailIsInUseAsync(System.String,System.String)">
+            <summary>Validates if the email address can be assigned to a specific user.</summary>
+            <param name="email">Email address to be validated.</param>
+            <param name="userId">
+            Identification code of the user for whom the validation is to be performed.
+            This parameter should be used for editing the email of an existing user.
+            </param>
+        </member>
+    </members>
+</doc>

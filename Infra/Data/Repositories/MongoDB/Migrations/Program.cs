@@ -15,6 +15,8 @@ class Program
             .Build();
 
         var connString = config["Migrations:projetoRl:ConnectionString"];
+        var dbName = "projetoRl"; // Pode colocar no appsettings se quiser flexibilidade
+
         if (string.IsNullOrEmpty(connString))
         {
             Console.WriteLine("❌ ConnectionString não encontrada no appsettings.json");
@@ -23,67 +25,33 @@ class Program
 
         // 2️⃣ Conexão com MongoDB
         var client = new MongoClient(connString);
-        var dbName = "projetoRl"; // Se precisar, pode colocar no appsettings também
         var database = client.GetDatabase(dbName);
 
         // Coleção de controle de migrações
         var migrationCollection = database.GetCollection<MigrationHistory>("_migrations");
 
-        // 3️⃣ Procurar scripts na pasta Migrations
-        var migrationsDir = Path.Combine(Directory.GetCurrentDirectory(), "migrations");
-        if (!Directory.Exists(migrationsDir))
+        // 3️⃣ Criar collections diretamente
+        var collectionsToCreate = new[] { "user", "courier", "rental", "bike", "access_token", "validation_code" };
+
+        foreach (var collName in collectionsToCreate)
         {
-            Console.WriteLine("❌ Pasta migrations não encontrada.");
-            return;
-        }
-
-        var scriptFiles = Directory.GetFiles(migrationsDir, "*.js")
-                                   .OrderBy(f => f) // Ordem alfabética
-                                   .ToList();
-
-        foreach (var scriptPath in scriptFiles)
-        {
-            var scriptName = Path.GetFileName(scriptPath);
-
-            // Verificar se já foi executado
-            var alreadyRan = await migrationCollection
-                .Find(m => m.ScriptName == scriptName)
-                .AnyAsync();
-
-            if (alreadyRan)
+            // Verifica se a collection já existe
+            var alreadyExists = (await database.ListCollectionNames().ToListAsync()).Contains(collName);
+            if (!alreadyExists)
             {
-                Console.WriteLine($"⏩ {scriptName} já executado, pulando...");
-                continue;
-            }
+                await database.CreateCollectionAsync(collName);
+                Console.WriteLine($"✅ Collection {collName} criada!");
 
-            Console.WriteLine($"▶️ Executando migração: {scriptName}");
-
-            try
-            {
-                // 4️⃣ Rodando script no Mongo
-                var scriptContent = File.ReadAllText(scriptPath);
-
-                // Executar como comando JavaScript
-                var command = new BsonDocument
-                {
-                    { "eval", scriptContent }
-                };
-
-                await database.RunCommandAsync<BsonDocument>(command);
-
-                // 5️⃣ Salvar no histórico
+                // Registrar no histórico de migrações
                 await migrationCollection.InsertOneAsync(new MigrationHistory
                 {
-                    ScriptName = scriptName,
+                    ScriptName = $"CreateCollection_{collName}",
                     ExecutedAt = DateTime.UtcNow
                 });
-
-                Console.WriteLine($"✅ Migração {scriptName} concluída!");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine($"❌ Erro ao executar {scriptName}: {ex.Message}");
-                break; // Para a execução para evitar inconsistências
+                Console.WriteLine($"⏩ Collection {collName} já existe, pulando...");
             }
         }
 

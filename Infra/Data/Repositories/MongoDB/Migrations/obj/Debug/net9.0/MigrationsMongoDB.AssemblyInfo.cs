@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectRl.Infra.Data.Repositories.MongoDB.Migrations")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a65d8a3c31ed88d4ee7555611a41d6abc6e8d3b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37319ac479f835dc119a44618b480109adc49284")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectRl.Infra.Data.Repositories.MongoDB.Migrations")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectRl.Infra.Data.Repositories.MongoDB.Migrations")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

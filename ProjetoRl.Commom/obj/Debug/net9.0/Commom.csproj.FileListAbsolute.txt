@@ -5,6 +5,7 @@ C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.GeneratedMSBui
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.AssemblyInfoInputs.cache
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.AssemblyInfo.cs
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.csproj.CoreCompileInputs.cache
+C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.sourcelink.json
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\refint\Commom.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.pdb
