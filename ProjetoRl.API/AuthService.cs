@@ -5,6 +5,8 @@ using ProjetoRl.ProjetoRl.Domain.AccessTokens;
 using ProjetoRl.ProjetoRl.Domain.Users;
 using ProjetoRl.ProjetoRl.Domain.Users.DTOs;
 
+namespace ProjetoRl.ProjetoRl.API;
+
 [ApiController]
 [Route("auth")]
 [ApiExplorerSettings(GroupName = "Authentication")]
@@ -38,7 +40,7 @@ public class AuthService : ControllerBase
         var token = new JWTToken(user);
 
         var ip = Request?.HttpContext?.Connection?.RemoteIpAddress?.ToString() ?? "127.0.0.1";
-        var accessToken = new ProjetoRl.ProjetoRl.Domain.AccessTokens.AccessToken(token.Token, user.ID!);
+        var accessToken = new AccessToken(token.Token, user.ID!);
 
         await _accessTokenRep.SaveAsync(accessToken);
 

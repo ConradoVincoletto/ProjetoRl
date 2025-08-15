@@ -39,6 +39,9 @@ public class UserSchema
     [BsonElement("state")]
     public UserState State { get; set; }
 
+    [BsonElement("password_hash")]
+    public string? PassworHash { get; set; }
+
     /// <summary>Constructor with parameters to initialization.</summary>
     /// <param name="iD">Identification permission.</param>
     /// <param name="firstName">User first name.</param>
@@ -47,7 +50,14 @@ public class UserSchema
     /// <param name="cellphone">User cell phone.</param>
     /// <param name="roles">Roles linked for user.</param>
     /// <param name="state">User state situation.</param>
-    public UserSchema(string? iD, string firstName, string lastName, string email, string? cellphone, IEnumerable<Role> roles, UserState state)
+    public UserSchema(string? iD,
+                      string firstName,
+                      string lastName,
+                      string email,
+                      string? cellphone,
+                      IEnumerable<Role> roles,
+                      UserState state,
+                      string? passworHash)
     {
         ID = iD;
         FirstName = firstName;
@@ -56,6 +66,7 @@ public class UserSchema
         Cellphone = cellphone;
         Roles = roles;
         State = state;
+        PassworHash = passworHash;
     }
 
     ///<summary>Convert entity from development user to mongo context model.</summary>
@@ -71,7 +82,8 @@ public class UserSchema
                    scheme.Email,
                    scheme.Cellphone,
                    scheme.Roles,
-                   scheme.State);
+                   scheme.State,
+                   scheme.PassworHash);
     }
 
     ///<summary>Convert entity from development user to mongo context model.</summary>
@@ -87,6 +99,7 @@ public class UserSchema
                    entity.Email,
                    entity.Cellphone,
                    entity.Roles,
-                   entity.State);
+                   entity.State,
+                   entity.PasswordHash);
     }
 }

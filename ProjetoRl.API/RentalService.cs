@@ -6,7 +6,7 @@ using ProjetoRl.ProjetoRl.Domain.Rentals;
 using ProjetoRl.ProjetoRl.Domain.Users;
 using System.Net;
 
-namespace ProjetoRl.API.Controllers;
+namespace ProjetoRl.ProjetoRl.API;
 
 [ApiController]
 [Route("rentals")]

@@ -31,7 +31,7 @@ class Program
         var migrationCollection = database.GetCollection<MigrationHistory>("_migrations");
 
         // 3️⃣ Criar collections diretamente
-        var collectionsToCreate = new[] { "user", "courier", "rental", "bike", "access_token", "validation_code" };
+        var collectionsToCreate = new[] { "user", "courier", "rental", "bike", "access_token" };
 
         foreach (var collName in collectionsToCreate)
         {

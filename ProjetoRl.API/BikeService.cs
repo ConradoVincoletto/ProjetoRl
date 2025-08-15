@@ -7,11 +7,10 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using ProjetoRl.ProjetoRl.Commom;
-using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Authorization;
 using ProjetoRl.ProjetoRl.Domain.Rentals;
 
-namespace ProjetoRl.API.Controllers;
+namespace ProjetoRl.ProjetoRl.API;
 
 [ApiController]
 [Route("bikes")]

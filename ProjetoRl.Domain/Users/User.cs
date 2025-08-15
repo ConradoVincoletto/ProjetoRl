@@ -26,7 +26,10 @@ public class User
     /// <summary>User account state.</summary>
     public UserState State { get; private set; }
 
-        /// <summary>Standard constructor.</summary>
+    /// <summary>User's password hash.</summary>
+    public string? PasswordHash { get; set; }
+
+    /// <summary>Default constructor for Entity Framework.</summary>   
     public User() { }
 
     /// <summary>Constructor with parameters for initialization.</summary>
@@ -37,7 +40,15 @@ public class User
     /// <param name="cellphone">User's cellphone number.</param>
     /// <param name="roles">Profiles assigned to the user's account.</param>
     /// <param name="state">User account state.</param>    
-    public User(string? iD, string firstName, string lastName, string email, string? cellphone, IEnumerable<Role> roles, UserState state)
+    /// <param name="passwordHash">User's password hash.</param>
+    public User(string? iD,
+                string firstName,
+                string lastName,
+                string email,
+                string? cellphone,
+                IEnumerable<Role> roles,
+                UserState state,
+                string? passwordHash)
     {
         ID = iD;
         FirstName = firstName;
@@ -46,6 +57,7 @@ public class User
         Cellphone = cellphone;
         Roles = roles;
         State = state;
+        PasswordHash = passwordHash;
     }   
 
     /// <summary>Constructor used in the registration process with local password setup.</summary>
@@ -68,5 +80,6 @@ public class User
         Cellphone = dto.Cellphone ?? Cellphone;
         Roles = dto.Roles ?? Roles;
         State = dto.Roles != null && dto.Roles.Any() ? UserState.Active : UserState.Pending;
+        PasswordHash = dto.PasswordHash ?? PasswordHash;
     } 
 }

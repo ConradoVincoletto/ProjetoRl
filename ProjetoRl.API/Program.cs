@@ -21,6 +21,8 @@ using ProjetoRl.Data.Repositories.MongoDB.Implementation.Bikes;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.Motorcycles;
 using ProjetoRl.ProjetoRl.API.Config;
+using ProjetoRl.ProjetoRl.Domain.AccessTokens;
+using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.AccessTokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +46,7 @@ builder.Services
         config.RegisterValidatorsFromAssemblyContaining<IBikeRepository>();
         config.RegisterValidatorsFromAssemblyContaining<ICourierRepository>();
         config.RegisterValidatorsFromAssemblyContaining<IUserRepository>();
+        config.RegisterValidatorsFromAssemblyContaining<IAccessTokenRepository>();
     });
 
 // ========================= Logging =========================
@@ -97,12 +100,6 @@ builder.Services.AddSwaggerGen(c =>
     // XML docs (precisa estar habilitado no .csproj)
     var docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.API.xml");
     c.IncludeXmlComments(docPath, true);
-
-    // docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.Domain.xml");
-    // c.IncludeXmlComments(docPath);
-
-    // docPath = Path.Combine(AppContext.BaseDirectory, "ProjetoRl.Common.xml");
-    // c.IncludeXmlComments(docPath);
 });
 
 // ========================= JWT Authentication =========================
@@ -178,11 +175,14 @@ builder.Services.AddScoped<BikeContext>();
 builder.Services.AddScoped<RentalContext>();
 builder.Services.AddScoped<CourierContext>();
 builder.Services.AddScoped<UserContext>();
+builder.Services.AddScoped<AccessTokenContext>();
 
 builder.Services.AddScoped<IUserRepository, UserRepositoryMongoDB>();
 builder.Services.AddScoped<IRentalRepository, RentalRepositoryMongoDB>();
 builder.Services.AddScoped<ICourierRepository, CourierRepositoryMongoDB>();
 builder.Services.AddScoped<IBikeRepository, BikeRepositoryMongoDB>();
+builder.Services.AddScoped<IAccessTokenRepository, AccessTokenRepositoryMongoDB>();
+
 builder.Services.AddHttpClient();
 
 builder.Services.AddFluentValidationRulesToSwagger();
@@ -197,7 +197,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Staging"))
     app.UseDeveloperExceptionPage();
 }
 
-app.UseCors(); // precisa vir antes de MapControllers
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -205,6 +205,5 @@ app.MapControllers();
 
 app.Logger.LogInformation("Environment: {env}", app.Environment.EnvironmentName);
 
-// app.UseHealthChecks("/health");
 
 app.Run();

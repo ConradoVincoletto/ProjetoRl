@@ -1,4 +1,4 @@
-C:\Users\conra\ProjetoRl\ProjetoRl.Commom\bin\Debug\net9.0\Commom.deps.json
+c:\Users\conra\ProjetoRl\ProjetoRl.Commom\bin\Debug\net9.0\Commom.deps.json
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\bin\Debug\net9.0\Commom.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\bin\Debug\net9.0\Commom.pdb
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.GeneratedMSBuildEditorConfig.editorconfig
@@ -9,4 +9,4 @@ C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.sourcelink.jso
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\refint\Commom.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\Commom.pdb
-C:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ref\Commom.dll
+c:\Users\conra\ProjetoRl\ProjetoRl.Commom\obj\Debug\net9.0\ref\Commom.dll

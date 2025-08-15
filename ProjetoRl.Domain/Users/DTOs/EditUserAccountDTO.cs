@@ -19,4 +19,7 @@ public class EditUserAccountDTO
 
     /// <summary>Access profiles assigned to the user.</summary>
     public IEnumerable<Role>? Roles { get; set; }
+
+    /// <summary>Password to set in user account.</summary>
+    public string? PasswordHash { get; set; } = null;
 }
