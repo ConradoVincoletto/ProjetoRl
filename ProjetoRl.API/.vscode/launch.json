@@ -4,10 +4,10 @@
     {
       "name": "Debug ProjetoRl.API",
       "type": "coreclr",
-      "request": "launch",
-      "program": "${workspaceFolder}/bin/Debug/net9.0/ProjetoRl.API.dll",
+      "request": "launch",      
+      "program": "${workspaceFolder}/ProjetoRl.API/bin/Debug/net9.0/ProjetoRl.API.dll",
       "args": [],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/ProjetoRl.API",
       "stopAtEntry": false,
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development",

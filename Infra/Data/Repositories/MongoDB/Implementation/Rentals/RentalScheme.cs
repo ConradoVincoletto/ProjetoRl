@@ -43,7 +43,15 @@ public class RentalScheme
     public RentalScheme() { }
 
     // Construtor parametrizado
-    public RentalScheme(string? iD, string bikeId, string courierId, int planDays, decimal dailyCost, DateTime startDate, DateTime expectedEndDate)
+    public RentalScheme(string? iD,
+                        string bikeId,
+                        string courierId,
+                        int planDays,
+                        decimal dailyCost,
+                        DateTime startDate,
+                        DateTime expectedEndDate,
+                        DateTime? actualEndDate,
+                        decimal? totalCost)
     {
         ID = iD;
         BikeId = bikeId;
@@ -52,6 +60,8 @@ public class RentalScheme
         DailyCost = dailyCost;
         StartDate = startDate;
         ExpectedEndDate = expectedEndDate;
+        ActualEndDate = actualEndDate;
+        TotalCost = totalCost;
     }
 
     public static implicit operator RentalScheme(Rental entity)
@@ -65,7 +75,9 @@ public class RentalScheme
                    entity.PlanDays,
                    entity.DailyCost,
                    entity.StartDate,
-                   entity.ExpectedEndDate);
+                   entity.ExpectedEndDate,
+                   entity.ActualEndDate,
+                   entity.TotalCost);
     }
 
     public static implicit operator Rental(RentalScheme scheme)
@@ -78,7 +90,9 @@ public class RentalScheme
                    scheme.CourierId,
                    scheme.PlanDays,
                    scheme.DailyCost,
-                   scheme.StartDate);
+                   scheme.StartDate,
+                   scheme.ActualEndDate,
+                   scheme.TotalCost);
     }
 }
 

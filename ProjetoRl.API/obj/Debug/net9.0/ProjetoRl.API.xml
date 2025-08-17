@@ -14,12 +14,6 @@
         <member name="T:ProjetoRl.ProjetoRl.API.BikeService">
             <summary>Bike service API.</summary>
         </member>
-        <member name="F:ProjetoRl.ProjetoRl.API.BikeService._con">
-            <summary>Connection with RabbitMQ.</summary>
-        </member>
-        <member name="F:ProjetoRl.ProjetoRl.API.BikeService._model">
-            <summary>Model of RabbitMQ.</summary>
-        </member>
         <member name="M:ProjetoRl.ProjetoRl.API.BikeService.#ctor(ProjetoRl.ProjetoRl.Domain.Motorcycles.IBikeRepository)">
             <summary>
             Constructor for BikeService.
@@ -149,6 +143,57 @@
         </member>
         <member name="P:ProjetoRl.ProjetoRl.API.RabbitMqSettings.Password">
             <summary>Password for RabbitMQ authentication.</summary>
+        </member>
+        <member name="T:ProjetoRl.ProjetoRl.API.RentalService">
+            <summary>
+            Rental Service API
+            </summary>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.RentalService.#ctor(ProjetoRl.ProjetoRl.Domain.Rentals.IRentalRepository)">
+            <summary>
+            Constructor to rental service
+            </summary>
+            <param name="rentalRep">Interface method</param>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.RentalService.GetRentalByIdAsync(System.String)">
+            <summary>
+            Get rental by id
+            </summary>
+            <param name="id">Identification code Rental.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.RentalService.GetRentalByBikeIdAsync(System.String)">
+            <summary>
+            Get rental by bike id
+            </summary>
+            <param name="id">Identication code bike.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.RentalService.CreateRentalAsync(ProjetoRl.Domain.Rentals.DTOs.CreateRentalDTO,ProjetoRl.ProjetoRl.Domain.Users.ICourierRepository,ProjetoRl.ProjetoRl.Domain.Motorcycles.IBikeRepository)">
+            <summary>
+            Create a new rental
+            </summary>
+            <param name="dto">DTO to create a new rental for bike.</param>
+            <param name="courierRepository">Courier Methods to call in create rental.</param>
+            <param name="bikeRepository">Bike methods tp call in create a new rental.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.RentalService.UpdateRentalAsync(System.String,ProjetoRl.Domain.Rentals.DTOs.UpdateRentalDTO)">
+            <summary>
+            Update an existing rental
+            </summary>
+            <param name="id">Identification code Rental.</param>
+            <param name="dto">DTO to update a Rental.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.RentalService.FinalizeRentalAsync(System.String,ProjetoRl.Domain.Rentals.DTOs.FinalizeRentalDTO)">
+            <summary>
+            Finalize an existing rental
+            </summary>
+            <param name="id">Identification code Rental.</param>
+            <param name="dto">DTO to finalize a rental bike.</param>
+        </member>
+        <member name="F:ProjetoRl.ProjetoRl.API.RentalService._planCosts">
+            <summary>
+            Dictionary to hold plan costs
+            </summary>
         </member>
         <member name="T:ProjetoRl.ProjetoRl.API.UserService">
             <summary>Services that provide access to user account data and operations.</summary>

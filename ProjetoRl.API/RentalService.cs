@@ -9,10 +9,10 @@ using System.Net;
 namespace ProjetoRl.ProjetoRl.API;
 
 /// <summary>
-/// Rental Service
+/// Rental Service API
 /// </summary>
 [ApiController]
-[Route("rentals")]
+[Route("api/[controller]")]
 [ApiExplorerSettings(GroupName = "Rentals")]
 public class RentalService : ControllerBase
 {
@@ -24,7 +24,7 @@ public class RentalService : ControllerBase
     /// <param name="rentalRep">Interface method</param>
     public RentalService(IRentalRepository rentalRep)
     {
-        _rentalRep = rentalRep;
+        _rentalRep = rentalRep;        
     }
 
     /// <summary>
@@ -118,7 +118,7 @@ public class RentalService : ControllerBase
         var rentalId = await _rentalRep.CreateAsync(rental);
 
         var createdRental = await _rentalRep.GetByIdAsync(rentalId);
-        return CreatedAtAction(nameof(GetRentalByIdAsync), new { id = rentalId }, createdRental);
+        return CreatedAtAction("GetRentalById", new { id = rentalId }, createdRental);
     }
 
     /// <summary>

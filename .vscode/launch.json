@@ -2,23 +2,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": ".NET Core Launch (web)",
+      "name": "Debug ProjetoRl.API",
       "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build",
+      "request": "launch",      
       "program": "${workspaceFolder}/ProjetoRl.API/bin/Debug/net9.0/ProjetoRl.API.dll",
       "args": [],
       "cwd": "${workspaceFolder}/ProjetoRl.API",
       "stopAtEntry": false,
-      "serverReadyAction": {
-        "action": "openExternally",
-        "pattern": "Now listening on: (https?://\\S+)"
-      },
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_URLS": "http://localhost:5116"
       },
-      "console": "internalConsole"
+      "console": "integratedTerminal",
+      "sourceFileMap": {
+        "/": "${workspaceFolder}"
+      },
+      "preLaunchTask": "build"
     }
   ]
 }

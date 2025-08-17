@@ -6,8 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- Referência para projeto comum -->
+  <ItemGroup>    
     <ProjectReference Include="..\ProjetoRl.Commom\Commom.csproj" />
   </ItemGroup>
 

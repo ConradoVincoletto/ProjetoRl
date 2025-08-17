@@ -16,7 +16,14 @@ public class Rental
 
     public Rental() { }
 
-    public Rental(string? id, string bikeId, string courierId, int planDays, decimal dailyCost, DateTime startDate)
+    public Rental(string? id,
+                  string bikeId,
+                  string courierId,
+                  int planDays,
+                  decimal dailyCost,
+                  DateTime startDate,
+                  DateTime? actualEndDate,
+                  decimal? totalCost)
     {
         ID = id;
         BikeId = bikeId;
@@ -25,18 +32,18 @@ public class Rental
         DailyCost = dailyCost;
         StartDate = startDate;
         ExpectedEndDate = startDate.AddDays(planDays);
-        ActualEndDate = null;
-        TotalCost = null;
+        ActualEndDate = actualEndDate;
+        TotalCost = totalCost;
     }
 
     public Rental(CreateRentalDTO dto)
         : this(null, dto.BikeId, dto.CourierId, dto.PlanDays, dto.DailyCost,
-               dto.StartDate)
+               dto.StartDate, null, null)
     { }
 
     public Rental(UpdateRentalDTO dto)
         : this(null, dto.BikeId, dto.CourierId, dto.PlanDays, dto.DailyCost,
-               dto.StartDate)
+               dto.StartDate, null, null)
     { }
 
     public void FinalizeRental(DateTime actualEndDate)

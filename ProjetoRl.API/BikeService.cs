@@ -21,11 +21,11 @@ public class BikeService : ControllerBase
 {
     private readonly IBikeRepository _bikeRep;
 
-    /// <summary>Connection with RabbitMQ.</summary>
-    private readonly IConnection _con;
 
-    /// <summary>Model of RabbitMQ.</summary>
-    private readonly IModel _model;
+    // private readonly IConnection _con;
+
+    // /// <summary>Model of RabbitMQ.</summary>
+    // private readonly IModel _model;
 
     /// <summary>
     /// Constructor for BikeService.
@@ -34,16 +34,16 @@ public class BikeService : ControllerBase
     /// <param name="bikeRep">Interface to contract of methods.</param>    
     public BikeService(IBikeRepository bikeRep)
     {
-        _bikeRep = bikeRep;        
-        var factory = new ConnectionFactory()
-        {
-            HostName = "localhost",
-            Port = 5672,
-            UserName = "guest",
-            Password = "guest"
-        };
-        _con = factory.CreateConnection();
-        _model = _con.CreateModel();
+        _bikeRep = bikeRep;
+        // var factory = new ConnectionFactory()
+        // {
+        //     HostName = "localhost",
+        //     Port = 5672,
+        //     UserName = "guest",
+        //     Password = "guest"
+        // };
+        // _con = factory.CreateConnection();
+        // _model = _con.CreateModel();
 
     }
 
@@ -104,8 +104,7 @@ public class BikeService : ControllerBase
 
         var createdBike = await _bikeRep.GetByIdAsync(bikeId);
 
-        // Publica evento no RabbitMQ 🚲
-        PublishBikeRegisteredEvent(createdBike!);
+        // PublishBikeRegisteredEvent(createdBike!);
 
         return CreatedAtAction("GetBikeById", new { id = bikeId }, createdBike);
     }
@@ -159,34 +158,34 @@ public class BikeService : ControllerBase
         return Ok();
     }
 
-    private void PublishBikeRegisteredEvent(Bike bike)
-    {
-        using var channel = _con.CreateModel();
+    // private void PublishBikeRegisteredEvent(Bike bike)
+    // {
+    //     using var channel = _con.CreateModel();
 
-        // Garante que o exchange existe
-        channel.ExchangeDeclare(
-            exchange: "bike.registered",
-            type: ExchangeType.Fanout,
-            durable: true,
-            autoDelete: false
-        );
+    //     // Garante que o exchange existe
+    //     channel.ExchangeDeclare(
+    //         exchange: "bike.registered",
+    //         type: ExchangeType.Fanout,
+    //         durable: true,
+    //         autoDelete: false
+    //     );
 
-        var message = JsonSerializer.Serialize(bike);
-        var body = Encoding.UTF8.GetBytes(message);
+    //     var message = JsonSerializer.Serialize(bike);
+    //     var body = Encoding.UTF8.GetBytes(message);
 
-        // Propriedades básicas - útil para persistência
-        var props = channel.CreateBasicProperties();
-        props.Persistent = true;
+    //     // Propriedades básicas - útil para persistência
+    //     var props = channel.CreateBasicProperties();
+    //     props.Persistent = true;
 
-        channel.BasicPublish(
-            exchange: "bike.registered",
-            routingKey: "",
-            basicProperties: props,
-            body: body
-        );
+    //     channel.BasicPublish(
+    //         exchange: "bike.registered",
+    //         routingKey: "",
+    //         basicProperties: props,
+    //         body: body
+    //     );
 
-        Console.WriteLine($"[RabbitMQ] Evento publicado: {message}");
-    }
+    //     Console.WriteLine($"[RabbitMQ] Evento publicado: {message}");
+    // }
 
 
 }
