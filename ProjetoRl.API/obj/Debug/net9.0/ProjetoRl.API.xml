@@ -11,8 +11,8 @@
             <param name="dto"></param>
             <returns></returns>
         </member>
-        <member name="F:ProjetoRl.ProjetoRl.API.BikeService._connectionFactory">
-            <summary>Factory of connections with the rabbitMQ.</summary>
+        <member name="T:ProjetoRl.ProjetoRl.API.BikeService">
+            <summary>Bike service API.</summary>
         </member>
         <member name="F:ProjetoRl.ProjetoRl.API.BikeService._con">
             <summary>Connection with RabbitMQ.</summary>
@@ -20,16 +20,106 @@
         <member name="F:ProjetoRl.ProjetoRl.API.BikeService._model">
             <summary>Model of RabbitMQ.</summary>
         </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.BikeService.#ctor(ProjetoRl.ProjetoRl.Domain.Motorcycles.IBikeRepository)">
+            <summary>
+            Constructor for BikeService.
+            Initializes the bike repository and sets up the RabbitMQ connection.
+            </summary>
+            <param name="bikeRep">Interface to contract of methods.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.BikeService.ListBikeAsync(ProjetoRl.ProjetoRl.Domain.Motorcycles.DTOs.ListBikeDTO)">
+            <summary>
+            List all bikes with pagination and filtering options.
+            </summary>
+            <param name="dto">DTO to list bike.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.BikeService.GetBikeByIdAsync(System.String)">
+            <summary>
+            Get a bike by its ID.
+            </summary>
+            <param name="id">Identificaticon code Bike</param>
+            <returns></returns>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.BikeService.CreateBikeAsync(ProjetoRl.Domain.Motorcycles.DTOs.CreateBikeDTO)">
+            <summary>
+            Create a new bike.
+            </summary>
+            <param name="dto">DTO to create a new bike</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.BikeService.UpdateBikeAsync(System.String,ProjetoRl.Domain.Motorcycles.DTOs.UpdateBikeDTO)">
+            <summary>
+            Update an existing bike.
+            </summary>
+            <param name="id">Identification code bike.</param>
+            <param name="dto">DTO to edit a existing bike.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.BikeService.DeactivateBikeAsync(System.String,ProjetoRl.ProjetoRl.Domain.Rentals.IRentalRepository)">
+            <summary>
+            Deactivate a bike. 
+            </summary>
+            <param name="id">Identification code bike.</param>
+            <param name="rentalRep">Interface methods to deactivate a rental of bike.</param>
+            <returns></returns>
+        </member>
         <member name="T:ProjetoRl.ProjetoRl.API.Config.AuthConfig">
             <summary>Authentication settings.</summary>
         </member>
         <member name="P:ProjetoRl.ProjetoRl.API.Config.AuthConfig.JWTKey">
             <summary>Key used for encrypting JWT tokens.</summary>
         </member>
+        <member name="T:ProjetoRl.ProjetoRl.API.CourierService">
+            <summary>
+            Service to management couriers.
+            </summary>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.#ctor(ProjetoRl.ProjetoRl.Domain.Users.ICourierRepository)">
+            <summary>
+            Constructor Service.
+            </summary>
+            <param name="courierRep">Interface method Courier.</param>
+        </member>
         <member name="M:ProjetoRl.ProjetoRl.API.CourierService.GetCouriers(ProjetoRl.ProjetoRl.Domain.Users.DTOs.CourierListFilterDTO)">
             <summary>
-            Lista couriers com filtros opcionais e paginação
+            List Couriers and pagination.
             </summary>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.GetCourierByIdAsync(System.String)">
+            <summary>
+            Get Courier by Id.
+            </summary>
+            <param name="id">Identification code Courirer.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.CreateCourierAsync(ProjetoRl.ProjetoRl.Domain.Users.DTOs.CreateCourierDTO)">
+            <summary>
+            Create a new Courier.
+            </summary>
+            <param name="dto">DTO to create a new courier.</param>        
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.UpdateCourierAsync(System.String,ProjetoRl.ProjetoRl.Domain.Users.DTOs.EditCourierDTO)">
+            <summary>
+            Update a existing Courier.
+            </summary>
+            <param name="id">Identification code Courier.</param>
+            <param name="dto">DTO to edit a existing courier.</param>        
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.DeactivateCourierAsync(System.String)">
+            <summary>
+            Deactivate a existing Courier.
+            </summary>
+            <param name="id">Identification code Courier.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.ReactivateCourierAsync(System.String)">
+            <summary>
+            Reactivate a existing Courier.
+            </summary>
+            <param name="id">Identification code Courier.</param>    
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.CourierService.CheckCNPJInUseAsync(System.String,System.String)">
+            <summary>
+            Check if CNPJ is already in use.
+            </summary>
+            <param name="id">Identification code Courier.</param>
+            <param name="cNPJ">Documento of courier to check if exist.</param>    
         </member>
         <member name="T:ProjetoRl.ProjetoRl.API.PasswordService">
             <summary>
@@ -42,6 +132,23 @@
             </summary>
             <param name="dto">DTO to set a password.</param>
             <param name="userRep">Interface to set a password in user account.</param>    
+        </member>
+        <member name="T:ProjetoRl.ProjetoRl.API.RabbitMqSettings">
+            <summary>
+            Settings for RabbitMQ connection.
+            </summary>
+        </member>
+        <member name="P:ProjetoRl.ProjetoRl.API.RabbitMqSettings.HostName">
+            <summary>Hostname of the RabbitMQ server.</summary>
+        </member>
+        <member name="P:ProjetoRl.ProjetoRl.API.RabbitMqSettings.Port">
+            <summary>Port of the RabbitMQ server.</summary>
+        </member>
+        <member name="P:ProjetoRl.ProjetoRl.API.RabbitMqSettings.UserName">
+            <summary>Username for RabbitMQ authentication.</summary>
+        </member>
+        <member name="P:ProjetoRl.ProjetoRl.API.RabbitMqSettings.Password">
+            <summary>Password for RabbitMQ authentication.</summary>
         </member>
         <member name="T:ProjetoRl.ProjetoRl.API.UserService">
             <summary>Services that provide access to user account data and operations.</summary>

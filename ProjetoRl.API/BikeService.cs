@@ -9,17 +9,17 @@ using System.Text.Json;
 using ProjetoRl.ProjetoRl.Commom;
 using Microsoft.AspNetCore.Authorization;
 using ProjetoRl.ProjetoRl.Domain.Rentals;
+using Microsoft.Extensions.Options;
 
 namespace ProjetoRl.ProjetoRl.API;
 
+/// <summary>Bike service API.</summary>
 [ApiController]
 [Route("bikes")]
 [ApiExplorerSettings(GroupName = "Bikes")]
 public class BikeService : ControllerBase
 {
     private readonly IBikeRepository _bikeRep;
-    /// <summary>Factory of connections with the rabbitMQ.</summary>
-    private readonly ConnectionFactory _connectionFactory;
 
     /// <summary>Connection with RabbitMQ.</summary>
     private readonly IConnection _con;
@@ -27,19 +27,31 @@ public class BikeService : ControllerBase
     /// <summary>Model of RabbitMQ.</summary>
     private readonly IModel _model;
 
+    /// <summary>
+    /// Constructor for BikeService.
+    /// Initializes the bike repository and sets up the RabbitMQ connection.
+    /// </summary>
+    /// <param name="bikeRep">Interface to contract of methods.</param>    
     public BikeService(IBikeRepository bikeRep)
     {
-        _bikeRep = bikeRep;
-        _connectionFactory = new ConnectionFactory()
+        _bikeRep = bikeRep;        
+        var factory = new ConnectionFactory()
         {
             HostName = "localhost",
+            Port = 5672,
             UserName = "guest",
             Password = "guest"
         };
-        _con = _connectionFactory.CreateConnection();
+        _con = factory.CreateConnection();
         _model = _con.CreateModel();
+
     }
 
+
+    /// <summary>
+    /// List all bikes with pagination and filtering options.
+    /// </summary>
+    /// <param name="dto">DTO to list bike.</param>    
     [HttpGet(Name = "GetAllBikes")]
     [Authorize(Roles = "Administrator")]
     [ProducesResponseType(typeof(IEnumerable<Bike>), (int)HttpStatusCode.OK)]
@@ -53,6 +65,11 @@ public class BikeService : ControllerBase
                                         dto.PageSize);
     }
 
+    /// <summary>
+    /// Get a bike by its ID.
+    /// </summary>
+    /// <param name="id">Identificaticon code Bike</param>
+    /// <returns></returns>
     [HttpGet("{id}", Name = "GetBikeById")]
     [ProducesResponseType(typeof(Bike), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -66,6 +83,10 @@ public class BikeService : ControllerBase
     }
 
 
+    /// <summary>
+    /// Create a new bike.
+    /// </summary>
+    /// <param name="dto">DTO to create a new bike</param>    
     [HttpPost(Name = "CreateBike")]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -73,20 +94,28 @@ public class BikeService : ControllerBase
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-        var existingBike = await _bikeRep.GetByPlateAsync(dto.Plate);
 
+        var existingBike = await _bikeRep.GetByPlateAsync(dto.Plate);
         if (existingBike != null)
             return BadRequest("A bike with this plate already exists.");
 
         var bike = new Bike(dto);
         var bikeId = await _bikeRep.CreateAsync(bike);
 
-
-
         var createdBike = await _bikeRep.GetByIdAsync(bikeId);
-        return CreatedAtAction(nameof(GetBikeByIdAsync), new { id = bikeId }, createdBike);
+
+        // Publica evento no RabbitMQ 🚲
+        PublishBikeRegisteredEvent(createdBike!);
+
+        return CreatedAtAction("GetBikeById", new { id = bikeId }, createdBike);
     }
 
+
+    /// <summary>
+    /// Update an existing bike.
+    /// </summary>
+    /// <param name="id">Identification code bike.</param>
+    /// <param name="dto">DTO to edit a existing bike.</param>    
     [HttpPut("{id}", Name = "UpdateBike")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -102,6 +131,13 @@ public class BikeService : ControllerBase
         return Ok();
     }
 
+    /// <summary>
+    /// Deactivate a bike. 
+    /// </summary>
+    /// <param name="id">Identification code bike.</param>
+    /// <param name="rentalRep">Interface methods to deactivate a rental of bike.</param>
+    /// <returns></returns>
+
     [HttpPatch("{id}/deactivate", Name = "DeactivateBike")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -110,37 +146,47 @@ public class BikeService : ControllerBase
         var bike = await _bikeRep.GetByIdAsync(id);
         if (bike == null)
             return NotFound();
-        
+
         var activeRental = await rentalRep.GetRentalByBikeIdAsync(bike.ID!);
 
-        if(activeRental != null)
+        if (activeRental != null)
         {
             ModelState.AddModelError("Bike", "Cannot deactivate a bike that is currently rented.");
             return BadRequest(ModelState);
         }
 
-        var deactiveBike = _bikeRep.RemoveAsync(id);
-        return Ok(deactiveBike);
+        await _bikeRep.RemoveAsync(id);
+        return Ok();
     }
 
     private void PublishBikeRegisteredEvent(Bike bike)
     {
         using var channel = _con.CreateModel();
 
-        // Cria um exchange tipo Fanout
-        channel.ExchangeDeclare(exchange: "bike.registered", type: ExchangeType.Fanout, durable: true);
+        // Garante que o exchange existe
+        channel.ExchangeDeclare(
+            exchange: "bike.registered",
+            type: ExchangeType.Fanout,
+            durable: true,
+            autoDelete: false
+        );
 
         var message = JsonSerializer.Serialize(bike);
         var body = Encoding.UTF8.GetBytes(message);
 
+        // Propriedades básicas - útil para persistência
+        var props = channel.CreateBasicProperties();
+        props.Persistent = true;
+
         channel.BasicPublish(
             exchange: "bike.registered",
             routingKey: "",
-            basicProperties: null,
+            basicProperties: props,
             body: body
         );
 
         Console.WriteLine($"[RabbitMQ] Evento publicado: {message}");
     }
+
 
 }

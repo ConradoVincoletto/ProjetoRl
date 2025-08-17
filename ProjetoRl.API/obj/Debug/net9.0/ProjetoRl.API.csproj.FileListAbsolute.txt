@@ -1,10 +1,11 @@
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\nlog.config
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\appsettings.json
+C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.staticwebassets.runtime.json
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.staticwebassets.endpoints.json
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.exe
-c:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.deps.json
-c:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.runtimeconfig.json
+C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.deps.json
+C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.runtimeconfig.json
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.pdb
 C:\Users\conra\ProjetoRl\ProjetoRl.API\bin\Debug\net9.0\ProjetoRl.API.xml
@@ -95,10 +96,10 @@ C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\staticwebassets.build.js
 C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-c:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ProjetoR.2B516B2A.Up2Date
+C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ProjetoR.2B516B2A.Up2Date
 C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ProjetoRl.API.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\refint\ProjetoRl.API.dll
 C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ProjetoRl.API.xml
 C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ProjetoRl.API.pdb
-c:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ProjetoRl.API.genruntimeconfig.cache
-c:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ref\ProjetoRl.API.dll
+C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ProjetoRl.API.genruntimeconfig.cache
+C:\Users\conra\ProjetoRl\ProjetoRl.API\obj\Debug\net9.0\ref\ProjetoRl.API.dll

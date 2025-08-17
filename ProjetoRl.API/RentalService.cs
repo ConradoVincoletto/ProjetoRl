@@ -8,6 +8,9 @@ using System.Net;
 
 namespace ProjetoRl.ProjetoRl.API;
 
+/// <summary>
+/// Rental Service
+/// </summary>
 [ApiController]
 [Route("rentals")]
 [ApiExplorerSettings(GroupName = "Rentals")]
@@ -15,12 +18,19 @@ public class RentalService : ControllerBase
 {
     private readonly IRentalRepository _rentalRep;
 
+    /// <summary>
+    /// Constructor to rental service
+    /// </summary>
+    /// <param name="rentalRep">Interface method</param>
     public RentalService(IRentalRepository rentalRep)
     {
         _rentalRep = rentalRep;
     }
 
-
+    /// <summary>
+    /// Get rental by id
+    /// </summary>
+    /// <param name="id">Identification code Rental.</param>    
     [HttpGet("{id}", Name = "GetRentalById")]
     [ProducesResponseType(typeof(Rental), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -32,7 +42,12 @@ public class RentalService : ControllerBase
 
         return Ok(rental);
     }
-
+    
+    /// <summary>
+    /// Get rental by bike id
+    /// </summary>
+    /// <param name="id">Identication code bike.</param>
+    /// <returns></returns>
     [HttpGet("bike/{id}", Name = "GetRentalByBikeId")]
     [ProducesResponseType(typeof(Rental), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -44,7 +59,13 @@ public class RentalService : ControllerBase
 
         return Ok(rental);
     }
-
+    
+    /// <summary>
+    /// Create a new rental
+    /// </summary>
+    /// <param name="dto">DTO to create a new rental for bike.</param>
+    /// <param name="courierRepository">Courier Methods to call in create rental.</param>
+    /// <param name="bikeRepository">Bike methods tp call in create a new rental.</param>    
     [HttpPost(Name = "CreateRental")]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -100,6 +121,11 @@ public class RentalService : ControllerBase
         return CreatedAtAction(nameof(GetRentalByIdAsync), new { id = rentalId }, createdRental);
     }
 
+    /// <summary>
+    /// Update an existing rental
+    /// </summary>
+    /// <param name="id">Identification code Rental.</param>
+    /// <param name="dto">DTO to update a Rental.</param>    
     [HttpPut("{id}", Name = "UpdateRental")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -116,7 +142,11 @@ public class RentalService : ControllerBase
         return NoContent();
     }
 
-
+    /// <summary>
+    /// Finalize an existing rental
+    /// </summary>
+    /// <param name="id">Identification code Rental.</param>
+    /// <param name="dto">DTO to finalize a rental bike.</param>
     [HttpPatch("{id}/finalize", Name = "FinalizeRental")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -132,6 +162,9 @@ public class RentalService : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Dictionary to hold plan costs
+    /// </summary>
     private readonly Dictionary<int, decimal> _planCosts = new()
     {
         { 7, 30m },

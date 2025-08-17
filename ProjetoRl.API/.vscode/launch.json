@@ -13,7 +13,11 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_URLS": "http://localhost:5116"
       },
-      "console": "internalConsole"
+      "console": "integratedTerminal",
+      "sourceFileMap": {
+        "/": "${workspaceFolder}"
+      },
+      "preLaunchTask": "build"
     }
   ]
 }

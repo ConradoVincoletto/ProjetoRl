@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Commom")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0d4ac3c8218fb2496a251b879f6a0474d2fb067")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9484b6f34baae2e46d2a3cdb49077d4c3fbca74d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Commom")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Commom")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

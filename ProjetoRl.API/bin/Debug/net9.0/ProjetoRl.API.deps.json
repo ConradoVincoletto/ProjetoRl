@@ -738,7 +738,8 @@
       },
       "ProjetoRl.Domain/1.0.0": {
         "dependencies": {
-          "Commom": "1.0.0"
+          "Commom": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
         },
         "runtime": {
           "ProjetoRl.Domain.dll": {

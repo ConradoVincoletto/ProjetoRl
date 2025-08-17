@@ -6,6 +6,9 @@ using System.Net;
 
 namespace ProjetoRl.ProjetoRl.API;
 
+/// <summary>
+/// Service to management couriers.
+/// </summary>
 [ApiController]
 [Route("couriers")]
 [ApiExplorerSettings(GroupName = "Couriers")]
@@ -13,13 +16,17 @@ public class CourierService : ControllerBase
 {
     private readonly ICourierRepository _courierRep;
 
+    /// <summary>
+    /// Constructor Service.
+    /// </summary>
+    /// <param name="courierRep">Interface method Courier.</param>
     public CourierService(ICourierRepository courierRep)
     {
         _courierRep = courierRep;
     }
 
     /// <summary>
-    /// Lista couriers com filtros opcionais e paginação
+    /// List Couriers and pagination.
     /// </summary>
     [HttpGet(Name = "ListCouriers")]
     public async Task<IActionResult> GetCouriers([FromQuery] CourierListFilterDTO dto)
@@ -35,6 +42,10 @@ public class CourierService : ControllerBase
         return Ok(result);
     }
 
+    /// <summary>
+    /// Get Courier by Id.
+    /// </summary>
+    /// <param name="id">Identification code Courirer.</param>    
     [HttpGet("{id}", Name = "GetCourierById")]
     [ProducesResponseType(typeof(Courier), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -47,10 +58,15 @@ public class CourierService : ControllerBase
         return Ok(courier);
     }
 
+    /// <summary>
+    /// Create a new Courier.
+    /// </summary>
+    /// <param name="dto">DTO to create a new courier.</param>        
     [HttpPost(Name = "CreateCourier")]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult<Courier>> CreateCourierAsync([FromBody] CreateCourierDTO dto)
+    [Consumes("multipart/form-data")]
+    public async Task<ActionResult<Courier>> CreateCourierAsync([FromForm] CreateCourierDTO dto)
     {
 
         if (await CheckCNPJInUseAsync(null, dto.Cnpj))
@@ -67,38 +83,50 @@ public class CourierService : ControllerBase
 
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
-
-        if (!string.IsNullOrEmpty(dto.DriverLicenseImageBase64))
-            dto.DriverLicenseImagePath = await SaveDriverLicenseImageAsync(dto.Identifier, dto.DriverLicenseImageBase64);
+        if (dto.DriverLicenseImage != null)
+        {
+            dto.DriverLicenseImagePath = await SaveDriverLicenseImageAsync(dto.Identifier, dto.DriverLicenseImage);
+        }
 
         var courier = new Courier(dto);
         var courierId = await _courierRep.CreateAsync(courier);
 
         var createdCourier = await _courierRep.GetByIdAsync(courierId);
-        return CreatedAtAction(nameof(GetCourierByIdAsync), new { id = courierId }, createdCourier);
+        return CreatedAtAction("GetCourierById", new { id = courierId }, createdCourier);
     }
 
-
+    /// <summary>
+    /// Update a existing Courier.
+    /// </summary>
+    /// <param name="id">Identification code Courier.</param>
+    /// <param name="dto">DTO to edit a existing courier.</param>        
     [HttpPut("{id}", Name = "UpdateCourier")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<IActionResult> UpdateCourierAsync([FromRoute] string id, [FromBody] EditCourierDTO dto)
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> UpdateCourierAsync([FromRoute] string id, [FromForm] EditCourierDTO dto)
     {
-        var courierUser = await _courierRep.GetByIdAsync(id);
-        if (courierUser == null)
-            return NotFound();
+        // Get existing courier to update
+        {
+            var courierUser = await _courierRep.GetByIdAsync(id);
+            if (courierUser == null)
+                return NotFound();
 
-        if (!string.IsNullOrEmpty(dto.DriverLicenseImageBase64))
-            dto.DriverLicenseImagePath = await SaveDriverLicenseImageAsync(courierUser.Identifier, dto.DriverLicenseImageBase64, courierUser.DriverLicenseImagePath);
-        else
-            dto.DriverLicenseImagePath = courierUser.DriverLicenseImagePath;
+            if (dto.DriverLicenseImage != null)
+                dto.DriverLicenseImagePath = await SaveDriverLicenseImageAsync(courierUser.Identifier, dto.DriverLicenseImage, courierUser.DriverLicenseImagePath);
+            else
+                dto.DriverLicenseImagePath = courierUser.DriverLicenseImagePath;
 
-        var updateCourier = new Courier(courierUser, dto);
-        await _courierRep.EditAsync(updateCourier);
+            var updateCourier = new Courier(courierUser, dto);
+            await _courierRep.EditAsync(updateCourier);
 
-        return Ok();
+            return Ok();
+        }
     }
-
+    /// <summary>
+    /// Deactivate a existing Courier.
+    /// </summary>
+    /// <param name="id">Identification code Courier.</param>    
     [HttpPatch("{id}/deactivate", Name = "DeactivateCourier")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -108,11 +136,15 @@ public class CourierService : ControllerBase
         if (courierUser == null)
             return NotFound();
 
-        var editCourierUser = _courierRep.DeactivateCourierAccountAsync(id);
+        await _courierRep.DeactivateCourierAccountAsync(id);
 
-        return Ok(editCourierUser);
+        return Ok();
     }
 
+    /// <summary>
+    /// Reactivate a existing Courier.
+    /// </summary>
+    /// <param name="id">Identification code Courier.</param>    
     [HttpPatch("{id}/activate", Name = "ReactivateCourier")]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -122,11 +154,16 @@ public class CourierService : ControllerBase
         if (courierUser == null)
             return NotFound();
 
-        var reactiveCourierUser = _courierRep.ActivateCourirerAccountAsync(id);
+        await _courierRep.ActivateCourirerAccountAsync(id);
 
-        return Ok(reactiveCourierUser);
+        return Ok();
     }
 
+    /// <summary>
+    /// Check if CNPJ is already in use.
+    /// </summary>
+    /// <param name="id">Identification code Courier.</param>
+    /// <param name="cNPJ">Documento of courier to check if exist.</param>    
     private async Task<bool> CheckCNPJInUseAsync(string? id, string cNPJ)
     {
         var cnpj = (await _courierRep.ListAsync(null, null, cNPJ, null, null, 1, 10)).Data
@@ -149,30 +186,24 @@ public class CourierService : ControllerBase
         return cnh != null;
     }
 
-    private async Task<string> SaveDriverLicenseImageAsync(string identifier, string base64Image, string? oldImagePath = null)
+    private async Task<string> SaveDriverLicenseImageAsync(string identifier, IFormFile? driverLicenseImage, string? oldImagePath = null)
     {
-        if (string.IsNullOrEmpty(base64Image))
+        if (driverLicenseImage == null)
             return oldImagePath ?? string.Empty;
 
         try
         {
-            string extension = ".jpg"; // padrão
-            string base64Data = base64Image;
-
-            // Detecta tipo pelo cabeçalho
-            if (base64Data.StartsWith("data:image/png"))
-                extension = ".png";
-            else if (base64Data.StartsWith("data:image/bmp"))
-                extension = ".bmp";
-            else if (base64Data.StartsWith("data:image/jpeg"))
-                extension = ".jpg";
-
-            // Remove o prefixo "data:image/png;base64,"
-            var base64WithoutPrefix = base64Data.Contains(",")
-                ? base64Data.Split(',')[1]
-                : base64Data;
-
-            var imageBytes = Convert.FromBase64String(base64WithoutPrefix);
+            // Detecta a extensão pelo ContentType do arquivo
+            string extension = Path.GetExtension(driverLicenseImage.FileName);
+            if (string.IsNullOrEmpty(extension))
+            {
+                if (driverLicenseImage.ContentType == "image/png")
+                    extension = ".png";
+                else if (driverLicenseImage.ContentType == "image/bmp")
+                    extension = ".bmp";
+                else
+                    extension = ".jpg"; // padrão
+            }
 
             // Gera nome único
             var fileName = $"CNH_{identifier}_{DateTime.Now:yyyyMMddHHmmss}{extension}";
@@ -184,8 +215,11 @@ public class CourierService : ControllerBase
 
             var filePath = Path.Combine(folderPath, fileName);
 
-            // Salva no disco
-            await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
+            // Copia o arquivo recebido para o disco
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await driverLicenseImage.CopyToAsync(stream);
+            }
 
             // Remove imagem antiga se existir
             if (!string.IsNullOrEmpty(oldImagePath))
@@ -203,5 +237,6 @@ public class CourierService : ControllerBase
             throw new InvalidOperationException($"Erro ao salvar imagem da CNH: {ex.Message}");
         }
     }
+
 
 }

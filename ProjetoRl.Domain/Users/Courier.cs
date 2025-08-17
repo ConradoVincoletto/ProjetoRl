@@ -39,7 +39,7 @@ public class Courier
         BirthDate = dto.BirthDate;
         DriverLicenseNumber = dto.DriverLicenseNumber;
         DriverLicenseType = dto.DriverLicenseType;
-        DriverLicenseImagePath = dto.DriverLicenseImagePath;
+        DriverLicenseImagePath = dto.DriverLicenseImagePath!;
         State = UserState.Active; // Default state
     }
 
@@ -49,9 +49,8 @@ public class Courier
         Name = dto.Name;
         Cnpj = courier.Cnpj; 
         BirthDate = dto.BirthDate;
-        DriverLicenseNumber = courier.DriverLicenseNumber;
-        DriverLicenseType = dto.DriverLicenseType;
-        DriverLicenseImagePath = dto.DriverLicenseImagePath;
+        DriverLicenseNumber = courier.DriverLicenseNumber;        
+        DriverLicenseImagePath = dto.DriverLicenseImagePath ?? null!;
         State = UserState.Active; // Default state
     }
 }

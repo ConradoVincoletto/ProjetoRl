@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http;
+
 namespace ProjetoRl.ProjetoRl.Domain.Users.DTOs;
 
 public class CreateCourierDTO
@@ -8,7 +10,8 @@ public class CreateCourierDTO
     public DateTime BirthDate { get; set; }
     public string DriverLicenseNumber { get; set; } = null!;
     public LicenseType DriverLicenseType { get; set; }
-    public string DriverLicenseImagePath { get; set; } = null!;
-    public string? DriverLicenseImageBase64 { get; set; }
+    public string? DriverLicenseImagePath { get; set; }
+    public IFormFile? DriverLicenseImage { get; set; }
 }
+
 

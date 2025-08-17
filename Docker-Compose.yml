@@ -9,12 +9,17 @@ services:
     depends_on:
       - redis
       - mongodb
+      - rabbitmq
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=true
       - DOTNET_RUNNING_IN_CONTAINER=true
       - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
       - ConnectionStrings__MongoDb=mongodb://mongodb:27017
       - ConnectionStrings__Redis=redis:6379
+      - RabbitMq__HostName=rabbitmq
+      - RabbitMq__Port=5672
+      - RabbitMq__UserName=guest
+      - RabbitMq__Password=guest
 
   redis:
     image: redis:latest
@@ -28,3 +33,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rootpass
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"   # porta para comunicação da API
+      - "15672:15672" # porta do painel de administração

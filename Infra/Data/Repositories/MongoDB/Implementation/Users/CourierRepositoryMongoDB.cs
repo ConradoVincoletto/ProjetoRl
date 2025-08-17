@@ -41,7 +41,7 @@ public class CourierRepositoryMongoDB : ICourierRepository
         if (!string.IsNullOrEmpty(cnpj))
             filter &= builder.Regex(c => c.Cnpj, cnpj);
 
-        if (!string.IsNullOrEmpty(cnpj))
+        if (!string.IsNullOrEmpty(driverLicenseNumber))
             filter &= builder.Regex(c => c.DriverLicenseNumber, driverLicenseNumber);
 
         if (states != null && states.Any())

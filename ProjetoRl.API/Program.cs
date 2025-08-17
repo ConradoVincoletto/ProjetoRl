@@ -23,6 +23,7 @@ using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.Motorcycles;
 using ProjetoRl.ProjetoRl.API.Config;
 using ProjetoRl.ProjetoRl.Domain.AccessTokens;
 using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.AccessTokens;
+using ProjetoRl.ProjetoRl.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
