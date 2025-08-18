@@ -1,5 +1,8 @@
 namespace ProjetoRl.Domain.Motorcycles.DTOs;
 
+/// <summary>
+/// // Data Transfer Object for creating a new motorcycle.
+/// </summary>
 public class CreateBikeDTO
 {
     public string Identifier { get; set; } = string.Empty;

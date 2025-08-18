@@ -1,4 +1,4 @@
-namespace Domain.Users;
+namespace ProjetoRl.ProjetoRl.Domain.Users;
 public enum UserState
 {
     /// <summary>The user account is inactive.</summary>

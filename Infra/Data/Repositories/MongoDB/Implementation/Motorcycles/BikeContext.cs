@@ -1,6 +1,5 @@
 using MongoDB.Driver;
 using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.Motorcycles;
-using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.Rentals;
 
 namespace ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.Users;
 

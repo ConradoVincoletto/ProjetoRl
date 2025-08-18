@@ -72,6 +72,11 @@ public class RentalRepositoryMongoDB : IRentalRepository
             .FirstOrDefaultAsync();
     }
 
+    /// <summary>
+    /// Gets rental information by bike ID.
+    /// </summary>
+    /// <param name="id">Identification code for bike.</param>
+    /// <returns></returns>
     public async Task<Rental?> GetRentalByBikeIdAsync(string id)
     {
         var builder = Builders<RentalScheme>.Filter;
@@ -115,7 +120,13 @@ public class RentalRepositoryMongoDB : IRentalRepository
             throw new KeyNotFoundException($"Aluguel com ID {rental.ID} não encontrado para atualização.");
     }
 
-
+    /// <summary>
+    /// Finalizes a rental by updating the actual end date and total cost.
+    /// </summary>
+    /// <param name="rentalId">Identification code od rental</param>
+    /// <param name="actualEndDate">Actual date for finalize rental.</param>
+    /// <param name="totalCost">Total cost of rental.</param>
+    /// <returns></returns>
     public async Task FinalizeRentalAsync(string rentalId, DateTime actualEndDate, decimal totalCost)
     {
         var filter = Builders<RentalScheme>.Filter.Eq(r => r.ID, rentalId);
@@ -125,8 +136,6 @@ public class RentalRepositoryMongoDB : IRentalRepository
 
         await _rentalCtx.Rentals.UpdateOneAsync(filter, update);
     }
-
-
 
     /// <summary>Deletes a rental record.</summary>
     public async Task RemoveAsync(string id)

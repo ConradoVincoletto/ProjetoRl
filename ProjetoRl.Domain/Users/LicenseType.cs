@@ -1,4 +1,8 @@
 
+
+/// <summary>
+/// Enum for type of license of drive.
+/// </summary>
 public enum LicenseType
 {
     A = 1, // Motorcycle

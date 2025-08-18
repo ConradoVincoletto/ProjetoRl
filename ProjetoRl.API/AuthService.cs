@@ -7,6 +7,9 @@ using ProjetoRl.ProjetoRl.Domain.Users.DTOs;
 
 namespace ProjetoRl.ProjetoRl.API;
 
+/// <summary>
+/// Service for handling authentication operations.
+/// </summary>
 [ApiController]
 [Route("auth")]
 [ApiExplorerSettings(GroupName = "Authentication")]
@@ -15,6 +18,11 @@ public class AuthService : ControllerBase
     private readonly IAccessTokenRepository _accessTokenRep;
     private readonly IUserRepository _userRep;
 
+    /// <summary>
+    /// Constructor for AuthService.
+    /// </summary>
+    /// <param name="accessTokenRep">Interface method to access token.</param>
+    /// <param name="userRep">Interface method to user account.</param>
     public AuthService(IAccessTokenRepository accessTokenRep, IUserRepository userRep)
     {
         _accessTokenRep = accessTokenRep;
@@ -22,10 +30,9 @@ public class AuthService : ControllerBase
     }
 
     /// <summary>
-    /// 
+    /// Method to authenticate a user with a password.
     /// </summary>
-    /// <param name="dto"></param>
-    /// <returns></returns>
+    /// <param name="dto">DTO to auth with password.</param>    
     [HttpPost("auth", Name = "AuthenticateWithPassword")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]

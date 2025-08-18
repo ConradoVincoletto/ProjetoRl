@@ -53,7 +53,7 @@ public class BikeService : ControllerBase
     /// </summary>
     /// <param name="dto">DTO to list bike.</param>    
     [HttpGet(Name = "GetAllBikes")]
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
     [ProducesResponseType(typeof(IEnumerable<Bike>), (int)HttpStatusCode.OK)]
     public async Task<PagedResult<Bike>> ListBikeAsync([FromQuery] ListBikeDTO dto)
     {
@@ -71,6 +71,7 @@ public class BikeService : ControllerBase
     /// <param name="id">Identificaticon code Bike</param>
     /// <returns></returns>
     [HttpGet("{id}", Name = "GetBikeById")]
+    [Authorize]
     [ProducesResponseType(typeof(Bike), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult<Bike>> GetBikeByIdAsync([FromRoute] string id)
@@ -88,6 +89,7 @@ public class BikeService : ControllerBase
     /// </summary>
     /// <param name="dto">DTO to create a new bike</param>    
     [HttpPost(Name = "CreateBike")]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     public async Task<ActionResult<Bike>> CreateBikeAsync([FromBody] CreateBikeDTO dto)
@@ -116,6 +118,7 @@ public class BikeService : ControllerBase
     /// <param name="id">Identification code bike.</param>
     /// <param name="dto">DTO to edit a existing bike.</param>    
     [HttpPut("{id}", Name = "UpdateBike")]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> UpdateBikeAsync([FromRoute] string id, [FromBody] UpdateBikeDTO dto)
@@ -138,6 +141,7 @@ public class BikeService : ControllerBase
     /// <returns></returns>
 
     [HttpPatch("{id}/deactivate", Name = "DeactivateBike")]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> DeactivateBikeAsync([FromRoute] string id, [FromServices] IRentalRepository rentalRep)

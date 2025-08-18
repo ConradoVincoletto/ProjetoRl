@@ -1,6 +1,9 @@
 
 namespace ProjetoRl.ProjetoRl.Domain.Motorcycles.DTOs;
 
+/// <summary>
+///  Data Transfer Object for listing motorcycles.
+/// </summary>
 public class ListBikeDTO
 {
     public string? Identifier { get; set; }

@@ -23,7 +23,7 @@ using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.Motorcycles;
 using ProjetoRl.ProjetoRl.API.Config;
 using ProjetoRl.ProjetoRl.Domain.AccessTokens;
 using ProjetoRl.Infra.Data.Repositories.MongoDB.Implementation.AccessTokens;
-using ProjetoRl.ProjetoRl.API;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,16 +39,17 @@ builder.Services.AddCors(options =>
 });
 
 // ========================= Controllers + FluentValidation =========================
-builder.Services
-    .AddControllers()
-    .AddFluentValidation(config =>
-    {
-        config.RegisterValidatorsFromAssemblyContaining<IRentalRepository>();
-        config.RegisterValidatorsFromAssemblyContaining<IBikeRepository>();
-        config.RegisterValidatorsFromAssemblyContaining<ICourierRepository>();
-        config.RegisterValidatorsFromAssemblyContaining<IUserRepository>();
-        config.RegisterValidatorsFromAssemblyContaining<IAccessTokenRepository>();
-    });
+
+builder.Services.AddControllers();
+
+builder.Services.AddValidatorsFromAssemblyContaining<IRentalRepository>();
+builder.Services.AddValidatorsFromAssemblyContaining<IBikeRepository>();
+builder.Services.AddValidatorsFromAssemblyContaining<ICourierRepository>();
+builder.Services.AddValidatorsFromAssemblyContaining<IUserRepository>();
+builder.Services.AddValidatorsFromAssemblyContaining<IAccessTokenRepository>();
+
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
 
 // ========================= Logging =========================
 builder.Logging.ClearProviders();

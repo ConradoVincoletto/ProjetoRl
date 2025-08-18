@@ -7,11 +7,25 @@ using ProjetoRl.ProjetoRl.Domain.Users;
 
 namespace ProjetoRl.ProjetoRl.API;
 
+/// <summary>
+/// JWT Token class for handling JSON Web Tokens.
+/// </summary>
 public class JWTToken
 {
+    /// <summary>
+    /// Gets the JWT token string.
+    /// </summary>
     public string Token { get; private set; }
+
+    /// <summary>
+    /// Gets the expiration date of the JWT token.
+    /// </summary>
     public DateTime Expires { get; private set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="JWTToken"/> class with the specified user.
+    /// </summary>
+    /// <param name="user">user account.</param>
     internal JWTToken(User user)
     {
         Expires = DateTime.UtcNow.AddMinutes(10);

@@ -1,4 +1,5 @@
 using Domain.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjetoRl.ProjetoRl.Domain.Users;
 using ProjetoRl.ProjetoRl.Domain.Users.DTOs;
@@ -29,6 +30,7 @@ public class CourierService : ControllerBase
     /// List Couriers and pagination.
     /// </summary>
     [HttpGet(Name = "ListCouriers")]
+    [Authorize]
     public async Task<IActionResult> GetCouriers([FromQuery] CourierListFilterDTO dto)
     {
         var result = await _courierRep.ListAsync(dto.Identifier,
@@ -49,6 +51,7 @@ public class CourierService : ControllerBase
     [HttpGet("{id}", Name = "GetCourierById")]
     [ProducesResponseType(typeof(Courier), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
+    [Authorize]
     public async Task<ActionResult<Courier>> GetCourierByIdAsync([FromRoute] string id)
     {
         var courier = await _courierRep.GetByIdAsync(id);
@@ -63,6 +66,7 @@ public class CourierService : ControllerBase
     /// </summary>
     /// <param name="dto">DTO to create a new courier.</param>        
     [HttpPost(Name = "CreateCourier")]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
     [Consumes("multipart/form-data")]
@@ -101,6 +105,7 @@ public class CourierService : ControllerBase
     /// <param name="id">Identification code Courier.</param>
     /// <param name="dto">DTO to edit a existing courier.</param>        
     [HttpPut("{id}", Name = "UpdateCourier")]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     [Consumes("multipart/form-data")]
@@ -128,6 +133,7 @@ public class CourierService : ControllerBase
     /// </summary>
     /// <param name="id">Identification code Courier.</param>    
     [HttpPatch("{id}/deactivate", Name = "DeactivateCourier")]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> DeactivateCourierAsync([FromRoute] string id)
@@ -146,6 +152,7 @@ public class CourierService : ControllerBase
     /// </summary>
     /// <param name="id">Identification code Courier.</param>    
     [HttpPatch("{id}/activate", Name = "ReactivateCourier")]
+    [Authorize]
     [ProducesResponseType((int)HttpStatusCode.NoContent)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> ReactivateCourierAsync([FromRoute] string id)

@@ -4,12 +4,23 @@
         <name>ProjetoRl.API</name>
     </assembly>
     <members>
+        <member name="T:ProjetoRl.ProjetoRl.API.AuthService">
+            <summary>
+            Service for handling authentication operations.
+            </summary>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.AuthService.#ctor(ProjetoRl.ProjetoRl.Domain.AccessTokens.IAccessTokenRepository,ProjetoRl.ProjetoRl.Domain.Users.IUserRepository)">
+            <summary>
+            Constructor for AuthService.
+            </summary>
+            <param name="accessTokenRep">Interface method to access token.</param>
+            <param name="userRep">Interface method to user account.</param>
+        </member>
         <member name="M:ProjetoRl.ProjetoRl.API.AuthService.AuthenticateWithPasswordAsync(ProjetoRl.ProjetoRl.Domain.Users.DTOs.AuthenticateWithPasswordDto)">
             <summary>
-            
+            Method to authenticate a user with a password.
             </summary>
-            <param name="dto"></param>
-            <returns></returns>
+            <param name="dto">DTO to auth with password.</param>    
         </member>
         <member name="T:ProjetoRl.ProjetoRl.API.BikeService">
             <summary>Bike service API.</summary>
@@ -114,6 +125,27 @@
             </summary>
             <param name="id">Identification code Courier.</param>
             <param name="cNPJ">Documento of courier to check if exist.</param>    
+        </member>
+        <member name="T:ProjetoRl.ProjetoRl.API.JWTToken">
+            <summary>
+            JWT Token class for handling JSON Web Tokens.
+            </summary>
+        </member>
+        <member name="P:ProjetoRl.ProjetoRl.API.JWTToken.Token">
+            <summary>
+            Gets the JWT token string.
+            </summary>
+        </member>
+        <member name="P:ProjetoRl.ProjetoRl.API.JWTToken.Expires">
+            <summary>
+            Gets the expiration date of the JWT token.
+            </summary>
+        </member>
+        <member name="M:ProjetoRl.ProjetoRl.API.JWTToken.#ctor(ProjetoRl.ProjetoRl.Domain.Users.User)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ProjetoRl.ProjetoRl.API.JWTToken"/> class with the specified user.
+            </summary>
+            <param name="user">user account.</param>
         </member>
         <member name="T:ProjetoRl.ProjetoRl.API.PasswordService">
             <summary>
